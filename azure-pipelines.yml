@@ -2,7 +2,7 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli:latest
-    options: --entrypoint: '/bin/sh -c'
+    options: /bin/sh -c
   - container: node
     image: node:14
 
