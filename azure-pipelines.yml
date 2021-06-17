@@ -6,6 +6,7 @@ resources:
       --interactive
       --privileged
       --user vsts_azpcontainer
+      --restart
   - container: node
     image: node:14
 
