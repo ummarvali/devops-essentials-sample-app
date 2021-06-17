@@ -2,8 +2,6 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli:latest
-    options:
-      --entrypoint  /usr/bin/bash
   - container: node
     image: node:14
 
