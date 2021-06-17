@@ -4,7 +4,6 @@ resources:
     image: sonarsource/sonar-scanner-cli:latest
     options:
       --entrypoint /bin/sh -c
-      --tty
   - container: node
     image: node:14
 
