@@ -2,8 +2,7 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli:latest
-    options:
-      --interactive
+    options: --interactive
       tasks: cat
 
   - container: node
