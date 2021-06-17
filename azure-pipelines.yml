@@ -2,9 +2,10 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli:latest
-      tasks: cat
-    options: --interactive
-
+    options:
+      --interactive
+      --privileged
+      --user vsts_azpcontainer  1001:1001
   - container: node
     image: node:14
 
