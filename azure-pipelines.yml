@@ -2,9 +2,7 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli:latest
-    options: 
-       --entrypoint: /bin/sh -c
-       --volume: /opt/java/openjdk/bin:/opt/sonar-scanner/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    options: --entrypoint:  --volume: /opt/java/openjdk/bin:/opt/sonar-scanner/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
   - container: node
     image: node:14
