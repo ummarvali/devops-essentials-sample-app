@@ -33,27 +33,7 @@ variables:
 
 
      
-stages:  
-- stage:
-  jobs:
-  - job: Sonnar_Scan
-    container: sonarscanner
-    steps:
-    - script: |
-        pwd
-        ls -ltr
-        mkdir .sonar .sonar/cache .scannerwork
-        chmod -R 777 .sonar
-        chmod -R 777 .scannerwork
-        export SONAR_USER_HOME=${BUILD_ARTIFACTSTAGINGDIRECTORY}
-        sonar-scanner \
-        -Dsonar.host.url=${SONARQUBE_URL} \
-        -Dsonar.projectKey=${NAMESPACE}-${K8S_DEPLOYMENT} \
-        -Dsonar.sources=. \
-        -Dsonar.projectVersion=${BUILD_ID} \
-        -Dsonar.exclusions=node_modules/** 
-  
-
+stages:
 - stage:
   jobs:
   - job: Build_docker
