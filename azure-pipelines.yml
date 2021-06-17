@@ -5,7 +5,7 @@ resources:
     options:
       --interactive
       --privileged
-      --user vsts_azpcontainer  1001:1001
+      --user vsts_azpcontainer
   - container: node
     image: node:14
 
