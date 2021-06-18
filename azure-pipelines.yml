@@ -3,6 +3,7 @@ resources:
   - container: sonarscanner
     image: sonarsource/sonarqube-scan
     entrypoint: ["/bin/bash"]
+    options:  --interactive
   - container: node
     image: node:14
 
