@@ -1,8 +1,8 @@
 resources:
   containers:
   - container: sonarscanner
-    image: sonarqube:latest
-    options:  --interactive
+    image: sonarsource/sonar-scanner-cli
+    options:  --workdir  /opt  --entrpoint  /usr/bin/env
   - container: node
     image: node:14
 
