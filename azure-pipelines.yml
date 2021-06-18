@@ -2,7 +2,7 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonarqube-scan
-    entrypoint: ["/docker-entrypoint.sh"]
+    entrypoint: ["/bin/bash"]
   - container: node
     image: node:14
 
