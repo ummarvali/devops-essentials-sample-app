@@ -2,13 +2,13 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli
-    options:  --workdir  /opt  --entrypoint  /usr/local/bin
+  
   - container: node
     image: node:14
 
   - container: kaniko
     image: gcr.io/kaniko-project/executor:debug-1534f90c9330d40486136b2997e7972a79a69baf
-    options:   --privileged   --entrypoint  /
+   
 
   - container: openshift-cli
     image: openshift/origin-cli:v3.11.0
@@ -33,21 +33,7 @@ variables:
 
 
      
-stages:
-- stage:
-  jobs:
-  - job: Build_docker
-    container: kaniko
-    steps:
-    - script: |
-        mkdir -p /kaniko/.docker
-        echo '{\"auths\":{\"'${DOCKER_URL}'\":{\"username\":\"'${REGISTRY_USERNAME}'\",\"password\":\"'${REGISTRY_PASSWORD}'\"}}}' > /kaniko/.docker/config.json
-        cat /kaniko/.docker/config.json
-        /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=${DOCKER_URL}/${DOCKER_IMAGE}:${DOCKER_TAG}
-  
-      
-      
- 
+stages: 
 - stage:
   jobs:
   - job: Sonar_Scan
