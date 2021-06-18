@@ -1,7 +1,7 @@
 resources:
   containers:
   - container: sonarscanner
-    image: sonarsource/sonarcloud-scan
+    image: sonarqube:latest
     options:  --interactive
   - container: node
     image: node:14
