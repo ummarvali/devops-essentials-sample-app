@@ -2,13 +2,13 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli
-    options:  --workdir  /opt  --entrypoint  /usr/bin/env
+    options:  --workdir  /opt  --entrypoint  /usr/sbin
   - container: node
     image: node:14
 
   - container: kaniko
     image: gcr.io/kaniko-project/executor:debug-1534f90c9330d40486136b2997e7972a79a69baf
-    entrypoint: [""]
+    options:  --entrypoint  /bin/bash
 
   - container: openshift-cli
     image: openshift/origin-cli:v3.11.0
@@ -34,25 +34,6 @@ variables:
 
      
 stages:
-- stage:
-  jobs:
-  - job: Sonnar_Scan
-    container: sonarscanner
-    steps:
-    - script: |
-        pwd
-        ls -ltr
-        mkdir .sonar .sonar/cache .scannerwork
-        chmod -R 777 .sonar
-        chmod -R 777 .scannerwork
-        export SONAR_USER_HOME=${BUILD_ARTIFACTSTAGINGDIRECTORY}
-        sonar-scanner \
-        -Dsonar.host.url=${SONARQUBE_URL} \
-        -Dsonar.projectKey=${NAMESPACE}-${K8S_DEPLOYMENT} \
-        -Dsonar.sources=. \
-        -Dsonar.projectVersion=${BUILD_ID} \
-        -Dsonar.exclusions=node_modules/** 
-
 - stage:
   jobs:
   - job: Build_docker
