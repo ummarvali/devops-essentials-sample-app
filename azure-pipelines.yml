@@ -2,7 +2,8 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonarqube-scan
-    options: --entrypoint: [""]
+    options: 
+        --entrypoint: [""]
 
   - container: node
     image: node:14
