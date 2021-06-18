@@ -2,7 +2,7 @@ resources:
   containers:
   - container: sonarscanner
     image: sonarsource/sonar-scanner-cli
-    options:  --workdir  /opt  --entrpoint  /usr/bin/env
+    options:  --workdir  /opt  --entrypoint  /usr/bin/env
   - container: node
     image: node:14
 
